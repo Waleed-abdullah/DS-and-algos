@@ -14,8 +14,8 @@ const array3 = [2, 5, 5, 2, 3, 5, 1, 2, 4];
 
 //O(n)
 function firstRecurringCharacter(input) {
-  if (!input || input.length <= 2) {
-    return 'Uh oh';
+  if (!input || input.length < 2) {
+    return 'Wrong input';
   }
 
   const characterMap = {};
@@ -28,6 +28,18 @@ function firstRecurringCharacter(input) {
       if (characterMap[value] > 1) {
         return value;
       }
+    }
+  }
+  return undefined;
+}
+
+function firstRecurringCharacter2(input) {
+  let map = {};
+  for (let i = 0; i < input.length; i++) {
+    if (map[input[i]]) {
+      return input[i];
+    } else {
+      map[input[i]] = true;
     }
   }
   return undefined;
