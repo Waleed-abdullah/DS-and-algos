@@ -11,7 +11,6 @@
 const array = [2, 5, 1, 2, 3, 5, 1, 2, 4];
 const array2 = [2, 3, 4, 5];
 const array3 = [2, 5, 5, 2, 3, 5, 1, 2, 4];
-
 //O(n)
 function firstRecurringCharacter(input) {
   if (!input || input.length < 2) {
@@ -33,8 +32,9 @@ function firstRecurringCharacter(input) {
   return undefined;
 }
 
+//O(n)
 function firstRecurringCharacter2(input) {
-  let map = {};
+  const map = {};
   for (let i = 0; i < input.length; i++) {
     if (map[input[i]]) {
       return input[i];
@@ -45,7 +45,18 @@ function firstRecurringCharacter2(input) {
   return undefined;
 }
 
-firstRecurringCharacter(array3);
+//O(n^2)
+function firstRecurringCharacter3(input) {
+  const index = [];
+  for (let i = 0; i < input.length; i++) {
+    for (let j = i + 1; j < input.length; j++) {
+      if (input[i] === input[j]) index.push(j);
+    }
+  }
+  return input[Math.min(...index)];
+}
+
+firstRecurringCharacter3(array3);
 
 //Bonus... What if we had this:
 // [2,5,5,2,3,5,1,2,4]
