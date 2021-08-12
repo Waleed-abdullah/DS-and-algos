@@ -12,6 +12,7 @@ const array = [2, 5, 1, 2, 3, 5, 1, 2, 4];
 const array2 = [2, 3, 4, 5];
 const array3 = [2, 5, 5, 2, 3, 5, 1, 2, 4];
 
+//O(n)
 function firstRecurringCharacter(input) {
   if (!input || input.length <= 2) {
     return 'Uh oh';
