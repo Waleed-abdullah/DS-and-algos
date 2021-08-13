@@ -94,9 +94,8 @@ class LinkedList {
     }
 
     const leader = this.traverseToIndex(index - 1);
-    const pointer = leader.next;
-    leader.next = pointer.next;
-    pointer.next = null;
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
     this.length--;
     return this.printList();
   }
