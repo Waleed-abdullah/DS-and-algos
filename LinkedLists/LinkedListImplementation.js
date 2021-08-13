@@ -56,6 +56,13 @@ class LinkedList {
       this.prepend(value);
       return this.printList();
     }
+    if (index === length) {
+      this.append(value);
+      return this.printList();
+    }
+    if (index > length) {
+      return 'invalid index';
+    }
 
     const newNode = new Node(value);
     let i = 1;
@@ -65,6 +72,7 @@ class LinkedList {
         let pointer = currentNode.next;
         currentNode.next = newNode;
         newNode.next = pointer;
+        this.length++;
         break;
       }
       currentNode = currentNode.next;
