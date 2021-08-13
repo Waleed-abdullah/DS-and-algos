@@ -21,13 +21,20 @@ class Node {
 
 class LinkedList {
   constructor(value) {
-    this.head = {
-      value: value,
-      next: null,
-    };
+    this.head = new Node(value);
     this.tail = this.head;
     this.length = 1;
   }
+  printList() {
+    const array = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      array.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    return array;
+  }
+
   append(value) {
     const newNode = new Node(value);
     this.tail.next = newNode;
@@ -43,10 +50,35 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  insert(index, value) {
+    if (index === 0) {
+      this.prepend(value);
+      return this.printList();
+    }
+
+    const newNode = new Node(value);
+    let i = 1;
+    let currentNode = this.head;
+    while (i <= index) {
+      if (i === index) {
+        let pointer = currentNode.next;
+        currentNode.next = newNode;
+        newNode.next = pointer;
+        break;
+      }
+      currentNode = currentNode.next;
+      i++;
+    }
+
+    return this.printList();
+  }
 }
 
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(3);
-console.log(myLinkedList);
+myLinkedList.insert(2, 4);
+myLinkedList.insert(4, 5);
+myLinkedList.printList();
