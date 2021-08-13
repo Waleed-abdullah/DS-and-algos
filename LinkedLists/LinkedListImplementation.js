@@ -56,29 +56,48 @@ class LinkedList {
       this.prepend(value);
       return this.printList();
     }
-    if (index === length) {
+    if (index === this.length) {
       this.append(value);
       return this.printList();
     }
-    if (index > length) {
+    if (index >= this.length) {
       return 'invalid index';
     }
 
     const newNode = new Node(value);
-    let i = 1;
+    const leader = this.traverseToIndex(index - 1);
+    const pointer = leader.next;
+    leader.next = newNode;
+    newNode.next = pointer;
+    this.length++;
+    return this.printList();
+  }
+  traverseToIndex(index) {
+    //Check parameters
+    let counter = 0;
     let currentNode = this.head;
-    while (i <= index) {
-      if (i === index) {
-        let pointer = currentNode.next;
-        currentNode.next = newNode;
-        newNode.next = pointer;
-        this.length++;
-        break;
-      }
+    while (counter !== index) {
       currentNode = currentNode.next;
-      i++;
+      counter++;
+    }
+    return currentNode;
+  }
+
+  remove(index) {
+    if (index === 0) {
+      this.head = this.head.next;
+      return this.printList();
     }
 
+    if (index >= this.length) {
+      return 'No such index exists';
+    }
+
+    const leader = this.traverseToIndex(index - 1);
+    const pointer = leader.next;
+    leader.next = pointer.next;
+    pointer.next = null;
+    this.length--;
     return this.printList();
   }
 }
@@ -89,4 +108,7 @@ myLinkedList.append(16);
 myLinkedList.prepend(3);
 myLinkedList.insert(2, 4);
 myLinkedList.insert(4, 5);
+myLinkedList.remove(4);
+myLinkedList.remove(0);
+myLinkedList.remove(1);
 myLinkedList.printList();
