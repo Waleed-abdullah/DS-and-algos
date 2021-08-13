@@ -60,7 +60,7 @@ class LinkedList {
       this.append(value);
       return this.printList();
     }
-    if (index >= this.length) {
+    if (index > this.length || index < 0) {
       return 'invalid index';
     }
 
@@ -89,7 +89,7 @@ class LinkedList {
       return this.printList();
     }
 
-    if (index >= this.length) {
+    if (index >= this.length || index < 0) {
       return 'No such index exists';
     }
 
