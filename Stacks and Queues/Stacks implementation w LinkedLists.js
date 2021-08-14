@@ -12,11 +12,8 @@ class Stack {
     this.length = 0;
   }
   peek() {
-    if (this.isEmpty()) {
-      return 'The stack is empty';
-    } else {
-      return this.top;
-    }
+    if (this.isEmpty()) return 'The stack is empty';
+    else return this.top;
   }
 
   push(value) {
@@ -28,12 +25,12 @@ class Stack {
     if (this.isEmpty()) {
       this.bottom = newNode;
       this.top = newNode;
-      this.length++;
     } else {
       newNode.next = this.top;
       this.top = newNode;
-      this.length++;
     }
+    this.length++;
+    return this;
   }
 
   pop() {
@@ -43,7 +40,6 @@ class Stack {
 
     const temp = this.top;
     this.top = temp.next;
-    temp.next = null;
     this.length--;
     if (this.length === 0) {
       this.bottom = null;
@@ -61,6 +57,7 @@ const myStack = new Stack();
 myStack.push('google');
 myStack.push('udemy');
 myStack.push('discord');
+myStack.pop();
 myStack.peek();
 
 //Discord
