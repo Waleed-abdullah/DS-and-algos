@@ -17,21 +17,21 @@ class BinarySearchTree {
     if (!this.root) {
       this.root = newNode;
     } else {
-      let pointer = this.root;
+      let currentNode = this.root;
       while (true) {
-        if (newNode.value < pointer.value) {
-          if (pointer.left === null) {
-            pointer.left = newNode;
+        if (newNode.value < currentNode.value) {
+          if (currentNode.left === null) {
+            currentNode.left = newNode;
             break;
           } else {
-            pointer = pointer.left;
+            currentNode = currentNode.left;
           }
         } else {
-          if (pointer.right === null) {
-            pointer.right = newNode;
+          if (currentNode.right === null) {
+            currentNode.right = newNode;
             break;
           } else {
-            pointer = pointer.right;
+            currentNode = currentNode.right;
           }
         }
       }
@@ -41,20 +41,11 @@ class BinarySearchTree {
     if (!value) return null;
     if (!this.root) return null;
 
-    let pointer = this.root;
-    while (pointer != null) {
-      if (value < pointer.value) {
-        pointer = pointer.left;
-        if (value === pointer.value) {
-          return true;
-        }
-      } else {
-        if (value === pointer.value) {
-          return true;
-        } else {
-          pointer = pointer.right;
-        }
-      }
+    let currentNode = this.root;
+    while (currentNode != null) {
+      if (value < currentNode.value) currentNode = currentNode.left;
+      else if (value > currentNode.value) currentNode = currentNode.right;
+      else if (value === currentNode.value) return currentNode;
     }
     return false;
   }
@@ -70,7 +61,7 @@ tree.insert(170);
 tree.insert(15);
 tree.insert(1);
 JSON.stringify(traverse(tree.root));
-tree.lookup(3);
+tree.lookup(1);
 //     9
 //  4     20
 //1  6  15  170
