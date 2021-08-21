@@ -2,7 +2,7 @@
 
 ## Overview 
 
-### Data Structures -
+### Data Structures 
 
 1. Arrays
 2. Graphs
@@ -10,7 +10,7 @@
 4. Linked Lists
 5. Stack and Queues
 
-### Algorithms -
+### Algorithms 
 
 1. Dynamic Programming
 2. Recursion
