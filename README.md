@@ -1,6 +1,6 @@
 # Implementation of Data Structures and Algorithms in JavaScript
 
-## Overview -
+## Overview 
 
 ### Data Structures -
 
