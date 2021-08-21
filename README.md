@@ -1,8 +1,8 @@
 # Implementation of Data Structures and Algorithms in JavaScript
 
-## Overview 
+## Overview
 
-### Data Structures 
+### Data Structures
 
 - Arrays
 - Graphs
@@ -10,7 +10,7 @@
 - Linked Lists
 - Stack and Queues
 
-### Algorithms 
+### Algorithms
 
 - Dynamic Programming
 - Recursion
